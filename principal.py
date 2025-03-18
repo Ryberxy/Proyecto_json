@@ -8,7 +8,7 @@ with open('futbol.json', 'r') as archivo:
 
 equipos = datos['equipos']
 
-menu = '''
+menu = '''⚽⚽⚽⚽⚽⚽⚽⚽
 1.Listar equipos
 2.Mostrar equipos y jugadores
 3.Filtrar jugadores por su posición
