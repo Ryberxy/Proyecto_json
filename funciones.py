@@ -1,6 +1,12 @@
 import json
+import time
 import sys
 
+def salir():
+    print("Saliendo del programa...⏳")
+    time.sleep(3)
+    sys.exit(1)
+    
 def listar_equipos(equipos):
     for equipo in equipos: 
         print(equipo)
@@ -14,19 +20,20 @@ def mostrar_jugadores(equipos):
 
 def filtrar_posicion(equipos):
     posiciones = []
+    numero_jugadores = 0
     pos = input("Ingrese una posición: ")
     for equipo in equipos:
-        numero_jugadores = len(equipos[equipo]['jugadores'])
         for jugador in equipos[equipo]['jugadores']:
             if jugador['detalles']['posicion'] == pos:
                 posiciones.append(jugador['nombre'])
+                numero_jugadores += 1
     for posicion in posiciones:
         print(f"{posicion}")
     print(f"Hay {numero_jugadores} jugadores con la posición {pos} en la liga.")
 
 def capitan(equipos):
     encontrado = False
-    capitan = input("Ingresa el capitán de un equipo: ")
+    capitan = input("Ingresa el capitán de un equipo🥇: ")
     for equipo in equipos:
         for jugador in equipos[equipo]['jugadores']:
             if jugador['nombre'] == capitan and jugador['detalles']['capitan']:
@@ -35,7 +42,8 @@ def capitan(equipos):
                 print(f"Dorsales: {dorsal[0]}, {dorsal[1]}, {dorsal[2]}, Equipo: {equipo}")
                 encontrado = True
     if encontrado:
-        print("Saliendo al menú principal...")
+        print("Saliendo al menú principal...⏳")
+        time.sleep(3)
     else:
         print(f"{capitan} no es el capitán de ningún equipo o no existe.")
             
@@ -71,10 +79,10 @@ def buscar_dorsal(equipos):
                         encontrado = True
 
             if encontrado:
-                print("Saliendo al menú principal...")
+                print("Saliendo al menú principal...⏳")
+                time.sleep(3)
             else:
                 print(f"El dorsal número {pedir_dorsal} no existe o no lo utiliza ningún futbolista de este equipo: {eq}")
     else:       
         print(f"El equipo: {eq}, no existe o no está en la liga.")
-
 
