@@ -50,33 +50,42 @@ def capitan(equipos):
 def buscar_dorsal(equipos):
     encontrado = False
     eq = input("Ingrese un equipo: ")
+    print(f"{'-'*45}")
+    print(f"{'Jugador':<20} {'Dorsales':<10}")
+    print(f"{'-'*45}")
     if eq in equipos:
             for jugador in equipos[eq]['jugadores']:
                 nombre = jugador['nombre']
                 dorsal = jugador['detalles']['dorsales']
-                print(f"Jugador: {nombre}, Dorsales: {dorsal[0]}, {dorsal[1]}, {dorsal[2]}")
+                print(f"{nombre:<20} {dorsal[0]:<10}{dorsal[1]:<11}{dorsal[2]:<12}")
+                print(f"{'-'*45}")
 
             try:
                 pedir_dorsal = int(input("Ingrese el dorsal de un jugador de dicho equipo: "))
             except ValueError:
                 print("Por favor, ingrese un número válido. Vuelve a introducir el equipo primero.")
                 return buscar_dorsal(equipos)
-            
+            print("-" * 115)  
+            print(f"{'Jugador':<20} {'Nacionalidad':<15} {'Fecha':<15} {'Valor':<10} {'Posición':<15} {'Pierna Hábil':<15} {'Altura':<10} {'Capitán':<10}")
+            print("-" * 115)  
+
+
             for jugador in equipos[eq]['jugadores']:
                 if pedir_dorsal in jugador['detalles']['dorsales']:
-                        nombre2 = jugador['nombre']
-                        nacionalidad = jugador['nacionalidad']
-                        fecha = jugador['fechaNacimiento']
-                        valor = jugador['detalles']['valor']
-                        posicion = jugador['detalles']['posicion']
-                        pie_bueno = jugador['detalles']['pieHabil']
-                        altura = jugador['detalles']['altura']
-                        capi = jugador['detalles']['capitan']
-                        if capi:
-                            print(f"Jugador: {nombre2}, Nacionalidad: {nacionalidad}, Fecha: {fecha}, Valor: {valor}, Posición: {posicion}, Pierna Hábil: {pie_bueno}, Altura: {altura}, Capitán: Sí")
-                        else:
-                            print(f"Jugador: {nombre2}, Nacionalidad: {nacionalidad}, Fecha: {fecha}, Valor: {valor}, Posición: {posicion}, Pierna Hábil: {pie_bueno}, Altura: {altura}, Capitán: No")
-                        encontrado = True
+                    nombre2 = jugador['nombre']
+                    nacionalidad = jugador['nacionalidad']
+                    fecha = jugador['fechaNacimiento']
+                    valor = jugador['detalles']['valor']
+                    posicion = jugador['detalles']['posicion']
+                    pie_bueno = jugador['detalles']['pieHabil']
+                    altura = jugador['detalles']['altura']
+                    capi = jugador['detalles']['capitan']
+                    capitan = "Sí" if capi else "No"
+                    
+                    # Imprimir los detalles en la tabla
+                    print(f"{nombre2:<20} {nacionalidad:<15} {fecha:<15} {valor:<10} {posicion:<15} {pie_bueno:<15} {altura:<10} {capitan:<10}")
+                    print("-" * 115)
+                    encontrado = True
 
             if encontrado:
                 print("Saliendo al menú principal...⏳")
